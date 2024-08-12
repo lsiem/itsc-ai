@@ -11,3 +11,8 @@ yarn.lock
 *.bak
 .idea
 /.github/dependabot.yml
+embed/yarn.lock
+embed/package-lock.json
+frontend/yarn.lock
+frontend/package-lock.json
+package-lock.json
