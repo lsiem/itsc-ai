@@ -19,7 +19,15 @@ export default function PasswordModal({ mode = "single" }) {
           className="w-full h-full object-cover"
           src={illustration}
           alt="login illustration"
-          style={{ opacity: 0.2 }}
+          style={{
+            opacity: 0.2,
+            objectFit: "contain",
+            userSelect: "none",
+            WebkitUserSelect: "none",
+            MozUserSelect: "none",
+            msUserSelect: "none",
+            pointerEvents: "none",
+          }}
         />
       </div>
       <div className="flex flex-col items-center justify-center w-full md:w-1/2 z-50 relative">
@@ -42,6 +50,7 @@ export default function PasswordModal({ mode = "single" }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePasswordModal(notry = false) {
   const [auth, setAuth] = useState({
     loading: true,
@@ -140,7 +149,7 @@ export function usePasswordModal(notry = false) {
       }
     }
     checkAuthReq();
-  }, []);
+  }, [notry]);
 
   return auth;
 }
