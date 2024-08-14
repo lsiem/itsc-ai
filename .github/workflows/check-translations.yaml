@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Cache node modules
         uses: actions/cache@v3
@@ -39,18 +39,19 @@ jobs:
 
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: |
+          cd frontend
+          npm install
 
       - name: Run verifyTranslations.mjs script
         id: verify
         run: |
           cd frontend/src/locales
-          output=$(node verifyTranslations.mjs 2>&1)
-          echo "::set-output name=result::$output"
+          node verifyTranslations.mjs
         continue-on-error: true
 
       - name: Check script result
         if: steps.verify.outcome == 'failure'
         run: |
-          echo "${{ steps.verify.outputs.result }}"
+          echo "Verification script failed. Please check the logs for details."
           exit 1
