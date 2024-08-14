@@ -19,7 +19,7 @@ function compareStructures(lang, a, b, subdir = null) {
           a,
           b,
         },
-        ...(!!subdir ? { subdir } : {}),
+        ...(subdir ? { subdir } : {}),
       },
     ]);
     return false;
@@ -36,7 +36,7 @@ function compareStructures(lang, a, b, subdir = null) {
       console.log("Keys are missing!", {
         [lang]: keysA,
         en: keysB,
-        ...(!!subdir ? { subdir } : {}),
+        ...(subdir ? { subdir } : {}),
         diff: {
           added: keysB.filter((key) => !keysA.includes(key)),
           removed: keysA.filter((key) => !keysB.includes(key)),
@@ -54,7 +54,7 @@ function compareStructures(lang, a, b, subdir = null) {
       console.log("Keys are not equal!", {
         [lang]: keysA,
         en: keysB,
-        ...(!!subdir ? { subdir } : {}),
+        ...(subdir ? { subdir } : {}),
       });
       return false;
     }

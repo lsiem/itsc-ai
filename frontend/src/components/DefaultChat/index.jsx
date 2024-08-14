@@ -227,6 +227,7 @@ export default function DefaultChatContainer() {
     }
 
     processMsgs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
