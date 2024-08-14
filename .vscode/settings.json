@@ -2,7 +2,6 @@
   "cspell.enable": false,
   "eslint.useFlatConfig": true,
   "docker.languageserver.formatter.ignoreMultilineInstructions": true,
-  "cSpell.words": ["Datei", "Formatdetails", "siehe", "Weitere"],
   "files.autoSave": "off",
   "editor.formatOnSave": true,
   "editor.formatOnType": false,

@@ -96,23 +96,22 @@
   "remoteEnv": {
     "NODE_ENV": "development",
     "ESLINT_USE_FLAT_CONFIG": "true",
-    "ANYTHING_LLM_RUNTIME": "docker"
+    "ANYTHING_LLM_RUNTIME": "docker",
+    "SSH_AUTH_SOCK": "/ssh-agent"
   },
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.ssh && sudo chmod 700 /home/vscode/.ssh && sudo chmod 600 /home/vscode/.ssh/*",
   // "initializeCommand": "echo Initialisiere....",
   "shutdownAction": "stopContainer",
   // Konfigurieren Sie werkzeugspezifische Eigenschaften.
   "customizations": {
     "codespaces": {
-      "openFiles": [
-        "README.md",
-        ".devcontainer/README.md"
-      ]
+      "openFiles": ["README.md", ".devcontainer/README.md"]
     },
     "vscode": {
-      "openFiles": [
-        "README.md",
-        ".devcontainer/README.md"
-      ],
+      "openFiles": ["README.md", ".devcontainer/README.md"],
       "extensions": [
         "bierner.github-markdown-preview",
         "bradlc.vscode-tailwindcss",
