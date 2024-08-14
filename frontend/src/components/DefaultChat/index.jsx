@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Plus
-} from "@phosphor-icons/react";
+import { Plus } from "@phosphor-icons/react";
 import NewWorkspaceModal, {
   useNewWorkspaceModal,
 } from "../Modals/NewWorkspace";
@@ -57,47 +55,6 @@ export default function DefaultChatContainer() {
       </div>
     </React.Fragment>,
 
-    <React.Fragment key="msg2">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`pb-4 pt-2 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
-          <div className="flex gap-x-5">
-            <UserIcon user={{ uid: "system" }} role={"assistant"} />
-
-            <span
-              className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-            >
-              {t("welcomeMessage.part2")}
-            </span>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>,
-
-    <React.Fragment key="msg3">
-      <div
-        className={`flex justify-center items-end w-full ${AI_BACKGROUND_COLOR}`}
-      >
-        <div
-          className={`pt-2 pb-6 px-4 w-full flex gap-x-5 md:max-w-[80%] flex-col`}
-        >
-          <div className="flex gap-x-5">
-            <UserIcon user={{ uid: "system" }} role={"assistant"} />
-            <div>
-              <span
-                className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
-              >
-                {t("welcomeMessage.part3")}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </React.Fragment>,
-
     <React.Fragment key="msg4">
       <div
         className={`flex justify-center items-end w-full ${USER_BACKGROUND_COLOR}`}
@@ -134,7 +91,7 @@ export default function DefaultChatContainer() {
               <span
                 className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
               >
-                {t("welcomeMessage.part4")}
+                {t("welcomeMessage.part2")}
               </span>
 
               {(!user || user?.role !== "default") && (
@@ -189,7 +146,7 @@ export default function DefaultChatContainer() {
               className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
             >
               <Trans
-                i18nKey="welcomeMessage.part5"
+                i18nKey="welcomeMessage.part3"
                 components={{
                   i: <i />,
                   br: <br />,
@@ -237,10 +194,9 @@ export default function DefaultChatContainer() {
               <span
                 className={`whitespace-pre-line text-white font-normal text-sm md:text-sm flex flex-col gap-y-1 mt-2`}
               >
-                {t("welcomeMessage.part6")}
+                {t("welcomeMessage.part4")}
               </span>
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-4">              
-              </div>
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-1 md:gap-4"></div>
             </div>
           </div>
         </div>
@@ -250,7 +206,7 @@ export default function DefaultChatContainer() {
 
   useEffect(() => {
     function processMsgs() {
-      if (!!window.localStorage.getItem("anythingllm_intro")) {
+      if (window.localStorage.getItem("anythingllm_intro")) {
         setMockMessages([...MESSAGES]);
         return false;
       } else {

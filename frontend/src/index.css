@@ -819,16 +819,46 @@ does not extend the close button beyond the viewport. */
   opacity: 0.1;
 }
 
-.honeycomb-cell:nth-child(1) { top: 30%; left: -50px; }
-.honeycomb-cell:nth-child(2) { top: 50%; left: -70px; }
-.honeycomb-cell:nth-child(3) { top: 70%; left: -50px; }
-.honeycomb-cell:nth-child(4) { top: 20%; left: 130px; }
-.honeycomb-cell:nth-child(5) { top: 40%; left: 110px; }
-.honeycomb-cell:nth-child(6) { top: 60%; left: 130px; }
-.honeycomb-cell:nth-child(7) { top: 80%; left: 110px; }
-.honeycomb-cell:nth-child(8) { top: 10%; left: 310px; }
-.honeycomb-cell:nth-child(9) { top: 30%; left: 290px; }
-.honeycomb-cell:nth-child(10) { top: 50%; left: 310px; }
+.honeycomb-cell:nth-child(1) {
+  top: 30%;
+  left: -50px;
+}
+.honeycomb-cell:nth-child(2) {
+  top: 50%;
+  left: -70px;
+}
+.honeycomb-cell:nth-child(3) {
+  top: 70%;
+  left: -50px;
+}
+.honeycomb-cell:nth-child(4) {
+  top: 20%;
+  left: 130px;
+}
+.honeycomb-cell:nth-child(5) {
+  top: 40%;
+  left: 110px;
+}
+.honeycomb-cell:nth-child(6) {
+  top: 60%;
+  left: 130px;
+}
+.honeycomb-cell:nth-child(7) {
+  top: 80%;
+  left: 110px;
+}
+.honeycomb-cell:nth-child(8) {
+  top: 10%;
+  left: 310px;
+}
+.honeycomb-cell:nth-child(9) {
+  top: 30%;
+  left: 290px;
+}
+.honeycomb-cell:nth-child(10) {
+  top: 50%;
+  left: 310px;
+}
 
 .katex-mathml {
   font-size: 20px;
