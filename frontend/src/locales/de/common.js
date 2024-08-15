@@ -64,22 +64,17 @@ const TRANSLATIONS = {
   },
 
   welcomeMessage: {
-    part1:
-      "Herzlich Willkommen bei der ITSC-K.I. Testumgebung!",
-    part2:
-      "",
-    part3:
-      "",
+    part1: "Herzlich Willkommen bei der ITSC-K.I. Testumgebung!",
     user1: "Alles klar! Wie fange ich an?",
-    part4:
+    part2:
       'Es ist einfach. Alle Sammlungen sind in "Arbeitsbereichen" organisiert, die wir Workspaces nennen. Workspaces sind Behälter für Dateien, Dokumente, Bilder, PDFs und vieles mehr, die in etwas umgewandelt werden, welche die ITSC-K.I. verstehen und in Gesprächen verwenden kann.\n\nSie können jederzeit Dateien hinzufügen und entfernen.',
     createWorkspace: "Erstelle deinen ersten Workspace",
     user2:
       "Bist du so eine Art KI-Dropbox? Was ist mit dem Chatten? Du bist doch ein Chatbot, oder?",
-    part5:
+    part3:
       "Ich bin mehr als eine intelligentere Dropbox.\n\nSo biete ich dir zwei Möglichkeiten an, wie du mit deinen Dateien interagieren kannst:\n\n<i>Abfrage:</i> Die Chats geben Daten oder Schlussfolgerungen zurück, die Ich in den Dokumenten deines Workspace gefunden habe, auf die ich Zugriff habe. Je mehr Dokumente du einem Workspace hinzufügst, desto intelligenter werde ich in diesem Workspace! \n\n<i>Konversation:</i> Deine Dokumente und der Chat-Verlauf tragen gleichzeitig zu meinem Wissen bei. So hast du die Möglichkeit, Korrekturen oder zusätzliche Informationen im Falle von Missverständnissen, die Ich haben könnte, anzuhängen. \n\nDu kannst zwischen beiden Modi wechseln \n<i>mitten im Chatten!</i>",
     user3: "Wow, das klingt spannend! Lass es mich gleich ausprobieren!",
-    part6: "Viel Spaß!"
+    part4: "Viel Spaß!",
   },
 
   "new-workspace": {
@@ -114,8 +109,7 @@ const TRANSLATIONS = {
     },
     pfp: {
       title: "Workspace-Bild",
-      description:
-        "Passe das Profilbild des Workspace an.",
+      description: "Passe das Profilbild des Workspace an.",
       image: "Workspace-Bild",
       remove: "Workspace-Bild entfernen",
     },

@@ -14,15 +14,37 @@ export default function PasswordModal({ mode = "single" }) {
   const { loginLogo } = useLogo();
   return (
     <div className="fixed top-0 left-0 right-0 z-50 w-full overflow-x-hidden overflow-y-auto md:inset-0 h-full bg-[#00101e] flex flex-row items-stretch">
-      <div className="flex md:w-1/2 items-center justify-start overflow-hidden">
+      <div
+        className="flex md:w-1/2 items-center justify-start overflow-hidden"
+        style={{
+          userSelect: "none",
+          WebkitUserSelect: "none",
+          MozUserSelect: "none",
+          msUserSelect: "none",
+          pointerEvents: "none",
+          userDrag: "none",
+          WebkitUserDrag: "none",
+        }}
+      >
         <img
           className="w-full h-full object-cover"
           src={illustration}
           alt="login illustration"
-          style={{ opacity: 0.2 }}
+          style={{
+            opacity: 0.2,
+            objectFit: "contain",
+          }}
         />
       </div>
-      <div className="flex flex-col items-center justify-center w-full md:w-1/2 z-50 relative">
+      <div
+        className="flex flex-col items-center justify-center w-full md:w-1/2 z-50 relative"
+        style={{
+          userSelect: "none",
+          WebkitUserSelect: "none",
+          MozUserSelect: "none",
+          msUserSelect: "none",
+        }}
+      >
         <img
           src={loginLogo}
           alt="Logo"
@@ -42,6 +64,7 @@ export default function PasswordModal({ mode = "single" }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePasswordModal(notry = false) {
   const [auth, setAuth] = useState({
     loading: true,
@@ -140,7 +163,7 @@ export function usePasswordModal(notry = false) {
       }
     }
     checkAuthReq();
-  }, []);
+  }, [notry]);
 
   return auth;
 }

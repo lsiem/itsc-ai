@@ -37,7 +37,7 @@ a {
 
 @font-face {
   font-family: "plus-jakarta-sans";
-  src: url("../public/fonts/PlusJakartaSans.ttf");
+  src: url("../fonts/PlusJakartaSans.ttf");
   font-display: swap;
 }
 
@@ -793,13 +793,4 @@ does not extend the close button beyond the viewport. */
   100% {
     top: -3.5rem;
   }
-}
-
-/* Math/Katex formatting to prevent duplication of content on screen */
-.katex-html[aria-hidden="true"] {
-  display: none;
-}
-
-.katex-mathml {
-  font-size: 20px;
 }

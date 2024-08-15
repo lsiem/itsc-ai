@@ -28,14 +28,10 @@ export default function Sidebar() {
     <div>
       <Link
         to={paths.home()}
-        className="flex shrink-0 max-w-[55%] items-center justify-start mx-[38px] my-[18px]"
+        className="flex shrink-0 items-center justify-start mx-[38px] my-[18px]"
         aria-label="Home"
       >
-        <img
-          src={logo}
-          alt="Logo"
-          className="rounded max-h-[24px] object-contain"
-        />
+        <img src={logo} alt="Logo" className="max-h-[24px] object-contain" />
       </Link>
       <div
         ref={sidebarRef}
@@ -138,7 +134,7 @@ export function SidebarMobileHeader() {
         />
         <div
           ref={sidebarRef}
-          className="relative h-[100vh] fixed top-0 left-0  rounded-r-[26px] bg-sidebar w-[80%] p-[18px] "
+          className="relative h-[100vh] top-0 left-0  rounded-r-[26px] bg-sidebar w-[80%] p-[18px] "
         >
           <div className="w-full h-full flex flex-col overflow-x-hidden items-between">
             {/* Header Information */}
@@ -152,7 +148,7 @@ export function SidebarMobileHeader() {
                 />
               </div>
               {(!user || user?.role !== "default") && (
-                <div className="flex gap-x-2 items-center text-slate-500 shink-0">
+                <div className="flex gap-x-2 items-center text-slate-500 shrink-0">
                   <SettingsButton />
                 </div>
               )}

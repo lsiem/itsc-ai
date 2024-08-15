@@ -1,8 +1,8 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+// Für Formatdetails siehe https://aka.ms/devcontainer.json. Für Konfigurationsoptionen siehe
+// README unter: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
   "name": "Node.js",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  // Verwenden Sie eine Dockerfile oder Docker Compose-Datei. Weitere Informationen: https://containers.dev/guide/dockerfile
   // "build": {
   //   "args": {
   //     "ARG_UID": "1000",
@@ -11,19 +11,19 @@
   //   "dockerfile": "Dockerfile"
   // },
   // "containerUser": "anythingllm",
-  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  // Oder verwenden Sie eine Dockerfile oder Docker Compose-Datei. Weitere Informationen: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-18-bookworm",
-  // Features to add to the dev container. More info: https://containers.dev/features.
+  // Funktionen, die dem Dev-Container hinzugefügt werden sollen. Weitere Informationen: https://containers.dev/features.
   "features": {
-    // Docker very useful linter
+    // Sehr nützlicher Docker-Linter
     "ghcr.io/dhoeric/features/hadolint:1": {
       "version": "latest"
     },
-    // Terraform support
+    // Terraform-Unterstützung
     "ghcr.io/devcontainers/features/terraform:1": {},
-    // Just a wrap to install needed packages
+    // Nur ein Wrapper zum Installieren benötigter Pakete
     "ghcr.io/devcontainers-contrib/features/apt-packages:1": {
-      // Dependencies copied from ../docker/Dockerfile plus some dev stuff
+      // Abhängigkeiten aus ../docker/Dockerfile kopiert plus einige Entwicklungstools
       "packages": [
         "build-essential",
         "ca-certificates",
@@ -76,10 +76,10 @@
       ]
     }
   },
-  "updateContentCommand": "cd server && yarn && cd ../collector && PUPPETEER_DOWNLOAD_BASE_URL=https://storage.googleapis.com/chrome-for-testing-public yarn && cd ../frontend && yarn && cd .. && yarn setup:envs && yarn prisma:setup && echo \"Please run yarn dev:server, yarn dev:collector, and yarn dev:frontend in separate terminal tabs.\"",
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // This configures VITE for github codespaces and installs gh cli
-  "postCreateCommand": "if [ \"${CODESPACES}\" = \"true\" ]; then echo 'VITE_API_BASE=\"https://$CODESPACE_NAME-3001.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN/api\"' > ./frontend/.env && (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) && sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y; fi",
+  "updateContentCommand": "cd server && yarn && cd ../collector && PUPPETEER_DOWNLOAD_BASE_URL=https://storage.googleapis.com/chrome-for-testing-public yarn && cd ../frontend && yarn && cd .. && yarn setup:envs && yarn prisma:setup && echo \"Bitte führen Sie yarn dev:server, yarn dev:collector und yarn dev:frontend in separaten Terminal-Tabs aus.\"",
+  // Verwenden Sie 'postCreateCommand', um Befehle nach der Erstellung des Containers auszuführen.
+  // Dies konfiguriert VITE für GitHub Codespaces und installiert die gh-CLI
+  // "postCreateCommand": "if [ \"${CODESPACES}\" = \"true\" ]; then echo 'VITE_API_BASE=\"https://$CODESPACE_NAME-3001.$GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN/api\"' > ./frontend/.env && (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) && sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main\" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y; fi",
   "portsAttributes": {
     "3001": {
       "label": "Backend",
@@ -91,16 +91,16 @@
     }
   },
   "capAdd": [
-    "SYS_ADMIN" // needed for puppeteer using headless chrome in sandbox
+    "SYS_ADMIN" // Benötigt für Puppeteer mit Headless Chrome in Sandbox
   ],
   "remoteEnv": {
     "NODE_ENV": "development",
     "ESLINT_USE_FLAT_CONFIG": "true",
     "ANYTHING_LLM_RUNTIME": "docker"
   },
-  // "initializeCommand": "echo Initialize....",
+  // "initializeCommand": "echo Initialisiere....",
   "shutdownAction": "stopContainer",
-  // Configure tool-specific properties.
+  // Konfigurieren Sie werkzeugspezifische Eigenschaften.
   "customizations": {
     "codespaces": {
       "openFiles": [
@@ -135,9 +135,6 @@
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "[dockercompose]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[dockerfile]": {
           "editor.defaultFormatter": "ms-azuretools.vscode-docker"
         },
         "[html]": {
@@ -162,11 +159,11 @@
           "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "[toml]": {
-          "editor.defaultFormatter": "tamasfe.even-better-toml"
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
         },
         "eslint.debug": true,
         "eslint.enable": true,
-        "eslint.experimental.useFlatConfig": true,
+        "eslint.useFlatConfig": true,
         "eslint.run": "onSave",
         "files.associations": {
           ".*ignore": "ignore",
@@ -202,6 +199,13 @@
         "typescript.validate.enable": false,
         "workbench.editorAssociations": {
           "*.md": "vscode.markdown.preview.editor"
+        },
+        // Neue Einstellungen für Live-Aktualisierung des Frontends
+        "files.autoSave": "afterDelay",
+        "files.autoSaveDelay": 1000,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "always"
         }
       }
     }
