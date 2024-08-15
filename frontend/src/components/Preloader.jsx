@@ -1,6 +1,15 @@
 import React, { useEffect, useRef } from "react";
+import loaderSvg from "../media/illustrations/loader.svg";
 
-export default function PreLoader() {
+export default function PreLoader({ size = "16" }) {
+  return (
+    <div className={`h-${size} w-${size}`}>
+      <img src={loaderSvg} alt="Loader" className="w-full h-full" />
+    </div>
+  );
+}
+
+export function FullScreenLoader() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -121,14 +130,6 @@ export default function PreLoader() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
       <canvas ref={canvasRef} className="w-full h-full" />
-    </div>
-  );
-}
-
-export function FullScreenLoader() {
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
-      <PreLoader />
     </div>
   );
 }
