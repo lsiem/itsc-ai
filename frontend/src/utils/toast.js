@@ -7,13 +7,20 @@ import usePrefersDarkMode from "@/hooks/usePrefersDarkMode";
 const showToast = (message, type = "default", opts = {}) => {
   const prefersDarkMode = usePrefersDarkMode();
   const options = {
-    position: "bottom-center",
-    autoClose: 5000,
-    hideProgressBar: false,
+    position: "bottom-right", // Sie können dies ändern, z.B. "top-right"
+    autoClose: 5000, // Dauer in Millisekunden
+    hideProgressBar: false, // Auf true setzen, um die Fortschrittsleiste auszublenden
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     theme: prefersDarkMode ? "dark" : "light",
+    // Fügen Sie hier benutzerdefinierte Stile hinzu
+    style: {
+      backgroundColor: prefersDarkMode ? "#333" : "#fff",
+      color: prefersDarkMode ? "#fff" : "#333",
+      borderRadius: "8px",
+      // Weitere CSS-Eigenschaften...
+    },
     ...opts,
   };
 
