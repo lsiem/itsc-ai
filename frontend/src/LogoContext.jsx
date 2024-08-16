@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import AnythingLLM from "./media/illustrations/logo.svg";
-import DefaultLoginLogo from "./media/illustrations/login-logo.svg";
+import DefaultLoginLogo from "./media/illustrations/logo.svg";
 import System from "./models/system";
 
 export const LogoContext = createContext();
@@ -15,16 +14,16 @@ export function LogoProvider({ children }) {
       try {
         const { isCustomLogo, logoURL } = await System.fetchLogo();
         if (logoURL) {
-          setLogo(AnythingLLM);
+          setLogo(isCustomLogo ? logoURL : DefaultLoginLogo);
           setLoginLogo(isCustomLogo ? logoURL : DefaultLoginLogo);
           setIsCustomLogo(isCustomLogo);
         } else {
-          setLogo(AnythingLLM);
+          setLogo(DefaultLoginLogo);
           setLoginLogo(DefaultLoginLogo);
           setIsCustomLogo(false);
         }
       } catch (err) {
-        setLogo(AnythingLLM);
+        setLogo(DefaultLoginLogo);
         setLoginLogo(DefaultLoginLogo);
         setIsCustomLogo(false);
         console.error("Failed to fetch logo:", err);

@@ -3,7 +3,6 @@ import { Plus } from "@phosphor-icons/react";
 import NewWorkspaceModal, {
   useNewWorkspaceModal,
 } from "../Modals/NewWorkspace";
-import paths from "@/utils/paths";
 import { isMobile } from "react-device-detect";
 import { SidebarMobileHeader } from "../Sidebar";
 import ChatBubble from "../ChatBubble";
