@@ -7,8 +7,9 @@ import {
   PencilSimple,
   Trash,
   X,
+  Check,
 } from "@phosphor-icons/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import truncate from "truncate";
 
@@ -27,9 +28,45 @@ export default function ThreadItem({
   const { slug } = useParams();
   const optionsContainer = useRef(null);
   const [showOptions, setShowOptions] = useState(false);
+  const [isRenaming, setIsRenaming] = useState(false);
+  const [newName, setNewName] = useState(thread.name);
   const linkTo = !thread.slug
     ? paths.workspace.chat(slug)
     : paths.workspace.thread(slug, thread.slug);
+
+  const handleRename = async () => {
+    if (newName.trim() === thread.name || newName.trim().length === 0) {
+      setIsRenaming(false);
+      setNewName(thread.name);
+      return;
+    }
+
+    const { message } = await Workspace.threads.update(
+      workspace.slug,
+      thread.slug,
+      { name: newName.trim() }
+    );
+    if (message) {
+      showToast(`Thread could not be updated! ${message}`, "error", {
+        clear: true,
+      });
+      setIsRenaming(false);
+      setNewName(thread.name);
+      return;
+    }
+
+    thread.name = newName.trim();
+    setIsRenaming(false);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleRename();
+    } else if (e.key === "Escape") {
+      setIsRenaming(false);
+      setNewName(thread.name);
+    }
+  };
 
   return (
     <div
@@ -83,6 +120,27 @@ export default function ThreadItem({
               </button>
             )}
           </div>
+        ) : isRenaming ? (
+          <div className="w-full flex items-center">
+            <input
+              type="text"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              onKeyDown={handleKeyDown}
+              className="w-full bg-transparent text-sm text-white border-none focus:outline-none"
+              autoFocus
+            />
+            <button
+              type="button"
+              className="border-none ml-2"
+              onClick={handleRename}
+            >
+              <Check
+                className="text-green-500 hover:text-green-400"
+                size={18}
+              />
+            </button>
+          </div>
         ) : (
           <a
             href={
@@ -100,7 +158,7 @@ export default function ThreadItem({
             </p>
           </a>
         )}
-        {!!thread.slug && !thread.deleted && (
+        {!!thread.slug && !thread.deleted && !isRenaming && (
           <div ref={optionsContainer}>
             {ctrlPressed ? (
               <button
@@ -133,6 +191,10 @@ export default function ThreadItem({
                 thread={thread}
                 onRemove={onRemove}
                 close={() => setShowOptions(false)}
+                startRenaming={() => {
+                  setIsRenaming(true);
+                  setShowOptions(false);
+                }}
               />
             )}
           </div>
@@ -142,29 +204,35 @@ export default function ThreadItem({
   );
 }
 
-function OptionsMenu({ containerRef, workspace, thread, onRemove, close }) {
+function OptionsMenu({
+  containerRef,
+  workspace,
+  thread,
+  onRemove,
+  close,
+  startRenaming,
+}) {
   const menuRef = useRef(null);
 
-  // Ref menu options
-  const outsideClick = (e) => {
-    if (!menuRef.current) return false;
-    if (
-      !menuRef.current?.contains(e.target) &&
-      !containerRef.current?.contains(e.target)
-    )
-      close();
-    return false;
-  };
+  const outsideClick = useCallback(
+    (e) => {
+      if (!menuRef.current) return false;
+      if (
+        !menuRef.current?.contains(e.target) &&
+        !containerRef.current?.contains(e.target)
+      )
+        close();
+      return false;
+    },
+    [containerRef, close]
+  );
 
-  const isEsc = (e) => {
-    if (e.key === "Escape" || e.key === "Esc") close();
-  };
-
-  function cleanupListeners() {
-    window.removeEventListener("click", outsideClick);
-    window.removeEventListener("keyup", isEsc);
-  }
-  // end Ref menu options
+  const isEsc = useCallback(
+    (e) => {
+      if (e.key === "Escape" || e.key === "Esc") close();
+    },
+    [close]
+  );
 
   useEffect(() => {
     function setListeners() {
@@ -173,35 +241,14 @@ function OptionsMenu({ containerRef, workspace, thread, onRemove, close }) {
       window.document.addEventListener("keyup", isEsc);
     }
 
+    function cleanupListeners() {
+      window.removeEventListener("click", outsideClick);
+      window.removeEventListener("keyup", isEsc);
+    }
+
     setListeners();
     return cleanupListeners;
-  }, [menuRef.current, containerRef.current]);
-
-  const renameThread = async () => {
-    const name = window
-      .prompt("What would you like to rename this thread to?")
-      ?.trim();
-    if (!name || name.length === 0) {
-      close();
-      return;
-    }
-
-    const { message } = await Workspace.threads.update(
-      workspace.slug,
-      thread.slug,
-      { name }
-    );
-    if (!!message) {
-      showToast(`Thread could not be updated! ${message}`, "error", {
-        clear: true,
-      });
-      close();
-      return;
-    }
-
-    thread.name = name;
-    close();
-  };
+  }, [containerRef, close, isEsc, outsideClick]);
 
   const handleDelete = async () => {
     if (
@@ -228,7 +275,7 @@ function OptionsMenu({ containerRef, workspace, thread, onRemove, close }) {
       className="absolute w-fit z-[20] top-[25px] right-[10px] bg-zinc-900 rounded-lg p-1"
     >
       <button
-        onClick={renameThread}
+        onClick={startRenaming}
         type="button"
         className="w-full rounded-md flex items-center p-2 gap-x-2 hover:bg-slate-500/20 text-slate-300"
       >
