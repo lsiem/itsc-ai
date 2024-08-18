@@ -70,7 +70,7 @@ export default function ThreadItem({
 
   return (
     <div
-      className="w-full relative flex h-[38px] items-center border-none hover:bg-slate-600/20 rounded-lg"
+      className="w-full relative flex h-[38px] items-center border-none hover:bg-workspace-item-selected-gradient-hover rounded-lg"
       role="listitem"
     >
       {/* Curved line Element and leader if required */}
@@ -272,7 +272,7 @@ function OptionsMenu({
   return (
     <div
       ref={menuRef}
-      className="absolute w-fit z-[20] top-[25px] right-[10px] bg-zinc-900 rounded-lg p-1"
+      className="absolute w-fit z-[20] top-[25px] right-[10px] bg-menu-gradient rounded-lg p-1"
     >
       <button
         onClick={startRenaming}
