@@ -18,7 +18,7 @@ export function FullScreenLoader() {
     let animationFrameId;
 
     const cfg = {
-      bgFillColor: "rgba(50,50,50,.01)",
+      bgFillColor: "#00101e",
       dirsCount: 6,
       stepsToTurn: 20,
       dotSize: 4,
@@ -128,7 +128,12 @@ export function FullScreenLoader() {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      style={{
+        background: "#00101e",
+      }}
+    >
       <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );

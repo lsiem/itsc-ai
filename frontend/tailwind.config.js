@@ -23,10 +23,10 @@ export default {
       colors: {
         "black-900": "#141414",
         accent: "#3D4147",
-        "sidebar-button": "#31353A",
-        sidebar: "#25272C",
+        "sidebar-button": "#33617c",
+        sidebar: "#00101e",
         "historical-msg-system": "rgba(255, 255, 255, 0.05);",
-        "historical-msg-user": "#2C2F35",
+        "historical-msg-user": "rgba(0, 0, 0, 0.05);",
         outline: "#4E5153",
         "primary-button": "#46C8FF",
         secondary: "#2C2F36",
@@ -52,10 +52,11 @@ export default {
           "linear-gradient(180deg, #3D4147 0%, #2C2F35 100%);",
         "selected-preference-gradient":
           "linear-gradient(180deg, #313236 0%, rgba(63.40, 64.90, 70.13, 0) 100%);",
-        "main-gradient": "linear-gradient(180deg, #3D4147 0%, #2C2F35 100%)",
-        "modal-gradient": "linear-gradient(180deg, #3D4147 0%, #2C2F35 100%)",
+        "main-gradient": "linear-gradient(180deg, #00101e 0%, #33617c 100%)",
+        "modal-gradient": "linear-gradient(180deg, #00101e 0%, #33617c 100%)",
         "sidebar-gradient": "linear-gradient(90deg, #5B616A 0%, #3F434B 100%)",
         "login-gradient": "linear-gradient(180deg, #00101e 0%, #33617c 100%)",
+        "menu-gradient": "linear-gradient(180deg, #00101e 0%, #33617c 100%)",
         "menu-item-gradient":
           "linear-gradient(90deg, #3D4147 0%, #2C2F35 100%)",
         "menu-item-selected-gradient":
@@ -63,7 +64,9 @@ export default {
         "workspace-item-gradient":
           "linear-gradient(90deg, #3D4147 0%, #2C2F35 100%)",
         "workspace-item-selected-gradient":
-          "linear-gradient(90deg, #5B616A 0%, #3F434B 100%)",
+          "linear-gradient(90deg, #00101e 0%, #33617c 100%)",
+        "workspace-item-selected-gradient-hover":
+          "linear-gradient(270deg, rgba(0, 16, 30, 0.4) 0%, rgba(51, 97, 124, 0.4) 100%)",
         "switch-selected": "linear-gradient(146deg, #5B616A 0%, #3F434B 100%)"
       },
       fontFamily: {

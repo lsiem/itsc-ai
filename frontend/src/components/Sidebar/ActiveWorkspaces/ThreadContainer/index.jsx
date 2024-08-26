@@ -114,9 +114,7 @@ export default function ThreadContainer({ workspace }) {
     );
   }
 
-  const activeThreadIdx = !!threads.find(
-    (thread) => thread?.slug === threadSlug
-  )
+  const activeThreadIdx = threads.find((thread) => thread?.slug === threadSlug)
     ? threads.findIndex((thread) => thread?.slug === threadSlug) + 1
     : 0;
 
@@ -158,7 +156,7 @@ function NewThreadButton({ workspace }) {
   const onClick = async () => {
     setLoading(true);
     const { thread, error } = await Workspace.threads.new(workspace.slug);
-    if (!!error) {
+    if (error) {
       showToast(`Could not create thread - ${error}`, "error", { clear: true });
       setLoading(false);
       return;
@@ -171,7 +169,7 @@ function NewThreadButton({ workspace }) {
   return (
     <button
       onClick={onClick}
-      className="w-full relative flex h-[40px] items-center border-none hover:bg-slate-600/20 rounded-lg"
+      className="w-full relative flex h-[40px] items-center border-none hover:bg-workspace-item-selected-gradient-hover rounded-lg"
     >
       <div className="flex w-full gap-x-2 items-center pl-4">
         <div className="bg-zinc-600 p-2 rounded-lg h-[24px] w-[24px] flex items-center justify-center">

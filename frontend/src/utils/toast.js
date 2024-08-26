@@ -16,7 +16,7 @@ const showToast = (message, type = "default", opts = {}) => {
     theme: prefersDarkMode ? "dark" : "light",
     // Fügen Sie hier benutzerdefinierte Stile hinzu
     style: {
-      backgroundColor: prefersDarkMode ? "#333" : "#fff",
+      background: prefersDarkMode ? "#00101e" : "#33617c",
       color: prefersDarkMode ? "#fff" : "#333",
       borderRadius: "8px",
       // Weitere CSS-Eigenschaften...
